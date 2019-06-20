@@ -16,15 +16,16 @@ class Generador(object):
 
     def generar(self, tiempo_inicial, tiempo_final):
 
-        import math
+        import numpy as np
 
         cantidad_muestras = (tiempo_final - tiempo_inicial).seconds/\
         self.frecuencia_muestreo
 
-        muestras = range(cantidad_muestras)
+        muestras = range(int(cantidad_muestras))
         #TODO agregar un ruido blanco a la senal
+        # Idea para generar el white noise, es mediante un ranndom.normal
 
-        ret = [self.amplitud*math.sin(2*(1/self.frecuencia)*i+self.fase) \
+        ret = [self.amplitud*np.sin(2*(1/self.frecuencia)*i+self.fase) \
         for i in muestras]
 
         return ret
